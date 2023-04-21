@@ -25,13 +25,13 @@ First you'll need to import the AWS sdk and set up your DynamoDB connection:
 import boto3
 import dynamodbgeo
 import uuid
-dynamodb = boto3.client('dynamodb', region_name='us-east-2')
+dynamodb = boto3.client('dynamodb', region_name='us-west-2')
 ```
 
 Next you must create an instance of `GeoDataManagerConfiguration` for each geospatial table you wish to interact with. This is a container for various options (see API below), but you must always provide a `DynamoDB` instance and a table name.
 
 ```python
-config = dynamodbgeo.GeoDataManagerConfiguration(dynamodb, 'geo_test_8')
+config = dynamodbgeo.GeoDataManagerConfiguration(dynamodb, 'geo_test')
 ```
 
 Finally, you should instantiate a manager to query and write to the table using this config object.
@@ -76,7 +76,7 @@ Example:
 
 ```python
 # Pick a hashKeyLength appropriate to your usage
-config.hashKeyLength = 3
+config.hashKeyLength = 7
 
 # Use GeoTableUtil to help construct a CreateTableInput.
 table_util = dynamodbgeo.GeoTableUtil(config)

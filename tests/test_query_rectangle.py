@@ -11,8 +11,6 @@ def test_query_rectangle():
         geoDataManager = dynamodbgeo.GeoDataManager(config)
         table_util = dynamodbgeo.GeoTableUtil(config)
         create_table_input = table_util.getCreateTableRequest()
-        # tweaking the base table parameters
-        create_table_input["ProvisionedThroughput"]['ReadCapacityUnits'] = 5
         # pass the input to create_table method
         table_util.create_table(create_table_input)
         PutItemInput = {
