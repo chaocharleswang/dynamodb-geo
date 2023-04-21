@@ -58,14 +58,20 @@ class GeoTableUtil:
         return params
 
     def create_table(self, CreateTableInput: "Dict with parameters to create the table"):
+        # skip if table already exists
         try:
-            table = self.config.dynamoDBClient.create_table(**CreateTableInput)
-
-            print("Waiting for table [{}] to be created".format(self.config.tableName))
-            self.config.dynamoDBClient.get_waiter('table_exists').wait(TableName=self.config.tableName)
-            # if no exception, continue
-            print("Table created")
-            return table
+            response = self.config.dynamoDBClient.describe_table(TableName=self.config.tableName)
+            # table exists...bail
+            print("Table [{}] already exists. Skipping table creation.".format(self.config.tableName))
+            return
         except:
-            print("Table [{}] already exists.".format(self.config.tableName))
-            return self.config.dynamoDBClient.Table(self.config.tableName)
+            pass  # no table... good
+        print("Creating table [{}]".format(self.config.tableName))
+
+        table = self.config.dynamoDBClient.create_table(**CreateTableInput)
+
+        print("Waiting for table [{}] to be created".format(self.config.tableName))
+        self.config.dynamoDBClient.get_waiter('table_exists').wait(TableName=self.config.tableName)
+        # if no exception, continue
+        print("Table created")
+        return
