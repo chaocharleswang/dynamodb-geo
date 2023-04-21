@@ -52,10 +52,7 @@ class GeoTableUtil:
                 }
                 }
             ],
-            'ProvisionedThroughput': {       
-                'ReadCapacityUnits': 10, 
-                'WriteCapacityUnits': 10
-            }
+            'BillingMode': 'PAY_PER_REQUEST'
         }
         return params
 

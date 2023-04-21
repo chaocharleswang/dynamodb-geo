@@ -82,9 +82,6 @@ config.hashKeyLength = 3
 table_util = dynamodbgeo.GeoTableUtil(config)
 create_table_input=table_util.getCreateTableRequest()
 
-#tweaking the base table parameters as a dict
-create_table_input["ProvisionedThroughput"]['ReadCapacityUnits']=5
-
 # Use GeoTableUtil to create the table
 table_util.create_table(create_table_input)
 ```
