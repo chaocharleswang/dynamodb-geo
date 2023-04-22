@@ -62,8 +62,8 @@ class GeoDataManager:
             centerLatLng = S2LatLng.from_degrees(QueryRadiusInput.getCenterPoint(
             ).getLatitude(), QueryRadiusInput.getCenterPoint().getLongitude())
             for item in filtered_results:
-                geoJson = item[self.config.geoJsonAttributeName]["S"]
-                coordinates = geoJson.split(",")
+                location = item[self.config.locationAttributeName]["S"]
+                coordinates = location.split(",")
                 latitude = float(coordinates[0])
                 longitude = float(coordinates[1])
                 latLng = S2LatLng.from_degrees(latitude, longitude)
@@ -80,8 +80,8 @@ class GeoDataManager:
         radiusInMeter = QueryRadiusInput.getRadiusInMeter()
         result = []
         for item in ItemList:
-            geoJson = item[self.config.geoJsonAttributeName]["S"]
-            coordinates = geoJson.split(",")
+            location = item[self.config.locationAttributeName]["S"]
+            coordinates = location.split(",")
             latitude = float(coordinates[0])
             longitude = float(coordinates[1])
             latLng = S2LatLng.from_degrees(latitude, longitude)
@@ -94,8 +94,8 @@ class GeoDataManager:
             QueryRectangleInput)
         result = []
         for item in ItemList:
-            geoJson = item[self.config.geoJsonAttributeName]["S"]
-            coordinates = geoJson.split(",")
+            location = item[self.config.locationAttributeName]["S"]
+            coordinates = location.split(",")
             latitude = float(coordinates[0])
             longitude = float(coordinates[1])
             latLng = S2LatLng.from_degrees(latitude, longitude)

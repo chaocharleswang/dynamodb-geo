@@ -18,6 +18,6 @@ class GeoDataManagerConfiguration:
         self.hashKeyAttributeName = "hashKey"
         self.rangeKeyAttributeName = "rangeKey"
         self.geohashAttributeName = "geohash"
-        self.geoJsonAttributeName = "geoJson"
+        self.locationAttributeName = "location"
         self.hashKeyLength = 2
-        self.geoJsonPointType = "Point"  # for now only point is supported
+        self.locationPointType = "Point"  # for now only point is supported

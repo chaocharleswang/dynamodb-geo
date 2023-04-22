@@ -112,11 +112,11 @@ See also [DynamoDB PutItem request][putitem]
 
 ## Updating a specific point
 
-Note that you cannot update the hash key, range key, geohash or geoJson. If you want to change these, you'll need to recreate the record.
+Note that you cannot update the hash key, range key, geohash or location. If you want to change these, you'll need to recreate the record.
 
 You must specify a `RangeKeyValue`, a `GeoPoint`, and an `UpdateItemInput dict` matching the [DynamoDB UpdateItem][updateitem] request (`TableName` and `Key` are filled in for you).
 
-#### Note : You must NOT update geoJson and geohash attributes.
+#### Note : You must NOT update location and geohash attributes.
 
 ```python
 #define a dict of the item to update
@@ -222,7 +222,7 @@ See [above][choosing-hashkeylength].
 
 The name of the attribute storing the range key, used as the range (aka sort) part of a [hash/range key primary key pair][hashrange]. Its value must be specified by you (hash-range pairs must be unique).
 
-#### geoJsonAttributeName: string = "geoJson"
+#### locationAttributeName: string = "location"
 
 The name of the attribute which will contain the longitude/latitude pair in a GeoJSON-style point (see also `longitudeFirst`).
 

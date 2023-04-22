@@ -60,7 +60,7 @@ class DynamoDBManager:
         params['Item'][self.config.hashKeyAttributeName] ={"N": str(hashKey)}
         params['Item'][self.config.rangeKeyAttributeName] ={"S": putPointInput.RangeKeyValue}
         params['Item'][self.config.geohashAttributeName] ={'N': str(geohash)}
-        params['Item'][self.config.geoJsonAttributeName] ={"S": "{},{}".format(putPointInput.GeoPoint.latitude,putPointInput.GeoPoint.longitude)}
+        params['Item'][self.config.locationAttributeName] ={"S": "{},{}".format(putPointInput.GeoPoint.latitude,putPointInput.GeoPoint.longitude)}
         
         try:
             response = self.config.dynamoDBClient.put_item(**params)
@@ -107,7 +107,7 @@ class DynamoDBManager:
         params['Key'][self.config.hashKeyAttributeName] ={"N": str(hashKey)}
         params['Key'][self.config.rangeKeyAttributeName] ={"S": UpdateItemInput.RangeKeyValue}
         
-        #TODO Geohash and geoJson cannot be updated. For now no control over that need to be added        
+        #TODO Geohash and location cannot be updated. For now no control over that need to be added
         try:
             response = self.config.dynamoDBClient.update_item(**params)
         except Exception as e:
