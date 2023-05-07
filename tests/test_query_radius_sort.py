@@ -7,7 +7,7 @@ def test_query_radius_sort():
     try:
         table_name = str(uuid.uuid4())
         config = dynamodbgeo.GeoDataManagerConfiguration(
-            dynamodb, table_name)
+            dynamodb, table_name, 'hash-range-index', 'hashKey', 'rangeKey')
         geoDataManager = dynamodbgeo.GeoDataManager(config)
         table_util = dynamodbgeo.GeoTableUtil(config)
         create_table_input = table_util.getCreateTableRequest()

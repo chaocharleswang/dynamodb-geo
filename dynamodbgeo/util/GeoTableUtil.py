@@ -35,6 +35,24 @@ class GeoTableUtil:
                 {'AttributeName': self.config.geohashAttributeName, 'AttributeType': 'N'}
 
             ],
+            'GlobalSecondaryIndexes': [
+                {
+                    'IndexName': self.config.gSIName,
+                    'KeySchema': [
+                        {
+                            'KeyType': 'HASH',
+                            'AttributeName': self.config.gSIHashKeyName
+                        },
+                        {
+                            'KeyType': 'RANGE',
+                            'AttributeName': self.config.gSIRangeKeyName
+                        }
+                    ],
+                    'Projection': {
+                        'ProjectionType': 'ALL'
+                    }
+                }
+            ],
             'LocalSecondaryIndexes': [
                 {
                     'IndexName': self.config.geohashIndexName,
