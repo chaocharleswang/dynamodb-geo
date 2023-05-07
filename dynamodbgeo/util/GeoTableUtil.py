@@ -32,8 +32,9 @@ class GeoTableUtil:
             'AttributeDefinitions': [
                 {'AttributeName': self.config.hashKeyAttributeName, 'AttributeType': 'N'},
                 {'AttributeName': self.config.rangeKeyAttributeName, 'AttributeType': 'S'},
-                {'AttributeName': self.config.geohashAttributeName, 'AttributeType': 'N'}
-
+                {'AttributeName': self.config.geohashAttributeName, 'AttributeType': 'N'},
+                {'AttributeName': self.config.gSIHashKeyName, 'AttributeType': 'S'},
+                {'AttributeName': self.config.gSIRangeKeyName, 'AttributeType': 'S'}
             ],
             'GlobalSecondaryIndexes': [
                 {
