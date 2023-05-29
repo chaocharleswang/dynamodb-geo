@@ -6,8 +6,7 @@ import uuid
 def test_query_rectangle():
     try:
         table_name = str(uuid.uuid4())
-        config = dynamodbgeo.GeoDataManagerConfiguration(
-            dynamodb, table_name, 'hash-range-index', 'hashKey', 'rangeKey')
+        config = dynamodbgeo.GeoDataManagerConfiguration(dynamodb, table_name)
         geoDataManager = dynamodbgeo.GeoDataManager(config)
         table_util = dynamodbgeo.GeoTableUtil(config)
         create_table_input = table_util.getCreateTableRequest()

@@ -33,27 +33,27 @@ class GeoTableUtil:
                 {'AttributeName': self.config.hashKeyAttributeName, 'AttributeType': 'N'},
                 {'AttributeName': self.config.rangeKeyAttributeName, 'AttributeType': 'S'},
                 {'AttributeName': self.config.geohashAttributeName, 'AttributeType': 'N'},
-                {'AttributeName': self.config.gSIHashKeyName, 'AttributeType': 'S'},
-                {'AttributeName': self.config.gSIRangeKeyName, 'AttributeType': 'S'}
+                # {'AttributeName': 'state', 'AttributeType': 'S'},
+                # {'AttributeName': 'city', 'AttributeType': 'S'},
             ],
-            'GlobalSecondaryIndexes': [
-                {
-                    'IndexName': self.config.gSIName,
-                    'KeySchema': [
-                        {
-                            'KeyType': 'HASH',
-                            'AttributeName': self.config.gSIHashKeyName
-                        },
-                        {
-                            'KeyType': 'RANGE',
-                            'AttributeName': self.config.gSIRangeKeyName
-                        }
-                    ],
-                    'Projection': {
-                        'ProjectionType': 'ALL'
-                    }
-                }
-            ],
+            # 'GlobalSecondaryIndexes': [
+            #     {
+            #         'IndexName': 'state-city-index',
+            #         'KeySchema': [
+            #             {
+            #                 'KeyType': 'HASH',
+            #                 'AttributeName': 'state'
+            #             },
+            #             {
+            #                 'KeyType': 'RANGE',
+            #                 'AttributeName': 'city'
+            #             }
+            #         ],
+            #         'Projection': {
+            #             'ProjectionType': 'ALL'
+            #         }
+            #     }
+            # ],
             'LocalSecondaryIndexes': [
                 {
                     'IndexName': self.config.geohashIndexName,
